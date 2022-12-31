@@ -101,14 +101,23 @@ def main():
     # Prompt the user for the number of items they want to enter into the array
     num_items = int(input("Enter the number of items you want to enter into the array: "))
 
+    # Prompt the user to specify whether they want the numbers in the array to be random
+    random_numbers = input("Do you want the numbers in the array to be random (y/n)? ")
+
     # Initialize the array
     arr = []
 
-    # Prompt the user to enter each item
-    print("Enter the items one by one:")
-    for i in range(num_items):
-        item = input()
-        arr.append(item)
+    # If the user wants random numbers, generate the specified number of random numbers
+    if random_numbers.lower() == "y":
+        import random
+        for i in range(num_items):
+            arr.append(random.randint(1, 1000000000))
+    else:
+        # Prompt the user to enter each item
+        print("Enter the items one by one:")
+        for i in range(num_items):
+            item = input()
+            arr.append(item)
 
     # Sort the array using the four sorting algorithms
     start = time.perf_counter()
