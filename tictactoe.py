@@ -40,7 +40,7 @@ def check_winner():
 def minimax(board, player, depth):
     winner = check_winner()
     if winner != 0:
-        return winner * player
+        return winner
     if depth == 9:
         return 0
     best_score = None
@@ -72,22 +72,13 @@ if __name__ == "__main__":
     while True:
         print_board()
         # User move
-        print("Your turn!")
+        print("Your turn user!")
         row = int(input("Enter row (0-2): "))
         col = int(input("Enter col (0-2): "))
         if board[row][col] != 0:
             print("spot already taken, please choose another spot")
             continue
         board[row][col] = -1
-        winner = check_winner()
-        if winner is not None:
-            if winner == -1:
-                print("You win!")
-            elif winner == 1:
-                print("AI wins!")
-            else:
-                print("Tie!")
-            break
         # AI move
         print("AI's turn!")
         row, col = find_best_move()
